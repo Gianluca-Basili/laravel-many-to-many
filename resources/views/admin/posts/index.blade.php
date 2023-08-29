@@ -15,6 +15,9 @@
 
                 </div>
             </div>
+            <div class="col-12 mt-5">
+                @include
+            </div>
             </div>
             <div class="col-12 mt-5">
                 <table class="table table-striped">
