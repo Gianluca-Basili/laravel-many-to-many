@@ -18,7 +18,10 @@
                 <img src="{{asset('storage/'.$post->cover_image)}}"  width="500px">
             </div>
             <div class="col-12">
-                {{$post->category->name}}
+               <strong>Categoria:</strong>
+              
+                
+               <a href="{{route('admin.categories.show', $post->id)}}" class="btn btn-sm btn-primary">Visualizza Categoria</a>{{$post->name}}
             </div>
             <div class="col-12">
                 <p>{{$post->content}}</p>
