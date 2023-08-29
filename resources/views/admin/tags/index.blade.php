@@ -10,7 +10,7 @@
                         <h1>I Nostri Tag</h1>
                     </div>
                     <div>
-                        <a href="{{route('admin.tags.create')}}" class="btn btn-sm btn-primary">Aggiungi tagegoria</a>
+                        <a href="{{route('admin.tags.create')}}" class="btn btn-sm btn-primary">Aggiungi tag</a>
                     </div>
 
                 </div>

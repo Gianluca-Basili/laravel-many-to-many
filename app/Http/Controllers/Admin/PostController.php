@@ -141,8 +141,11 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        $post->tags()->sync([]);
+        Storage::delete($post->cover_image);
+        $title_post = $post->title;
         $post->delete();
 
-        return redirect()->route('admin.posts.index');
+        return redirect()->route('admin.posts.index')->with('message', "$title_post cancellato correttamente");
     }
 }
