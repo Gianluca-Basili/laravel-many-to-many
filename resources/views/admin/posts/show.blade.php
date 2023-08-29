@@ -21,7 +21,7 @@
                <strong>Categoria:</strong>
               
                 
-               <a href="{{route('admin.categories.show', $post->id)}}" class="btn btn-sm btn-primary">Visualizza Categoria</a>{{$post->name}}
+               <a href="{{route('admin.categories.show', $post->id)}}" class="btn btn-sm btn-primary">visualizza categoria</a>
             </div>
             <div class="col-12">
                 <p>{{$post->content}}</p>

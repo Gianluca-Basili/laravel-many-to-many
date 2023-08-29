@@ -55,6 +55,7 @@
                             <div class="text-danger">{{$message}}</div>
                         @enderror
                     </div>
+                    
                     <div class="form-group mt-4">
                         
                         <textarea class="form-control" name="content" id="content" placeholder="Contenuto">{{old('content') ?? $post->content }}</textarea>

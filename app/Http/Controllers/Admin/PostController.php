@@ -9,6 +9,8 @@ use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\Tag;
+
 
 
 class PostController extends Controller
@@ -18,11 +20,15 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+      
+
+        
+
         $posts = Post::all();
 
-        return view('admin.posts.index',compact('posts'));
+        return view('admin.posts.index', compact('posts'));
     }
 
     /**
@@ -33,7 +39,8 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('admin.posts.create', compact('categories'));
+        $tags = Tag::all();
+        return view('admin.posts.create', compact('categories','tags'));
     }
 
     /**
@@ -62,9 +69,13 @@ class PostController extends Controller
         $form_data['slug'] = $slug;
         $post->fill($form_data);
         $post->save();
-       
 
-        return redirect()->route('admin.posts.index');
+        if($request->has('tags')){
+            $post->tags()->attach($request->tags);
+        }
+       
+        
+        return redirect()->route('admin.posts.index')->with('message', 'Nuovo post creato correttamente');
     }
 
     /**
@@ -112,8 +123,14 @@ class PostController extends Controller
         
         $form_data['slug'] = $post->generateSlug($form_data['title']);
         $post->update($form_data);
+
+        if($request->has('tags')){
+           
+            $post->tags()->sync($request->tags);
+
+        }
         
-        return redirect()->route('admin.posts.index');
+        return redirect()->route('admin.posts.index')->with('message', 'Post modificato correttamente');
     }
 
     /**

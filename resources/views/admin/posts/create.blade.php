@@ -36,10 +36,23 @@
                         <select name="category_id" id="category_id" class="form-control  @error('category_id')is_invalid @enderror">
                             <option value="">Seleziona categoria...</option>
                             @foreach($categories as $category)
-                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                <option value="{{$category->id}}" >{{$category->name}}</option>
                             @endforeach
                         </select>
                         @error('category_id')
+                            <div class="text-danger">{{$message}}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group mt-4">
+                        <p>Seleziona i tag</p>
+                        @foreach($tags as $tag)
+                            <div class="form-check @error('tags') is-invalid @enderror">
+                                <input type="checkbox" name="tags" id="" value="{{$tag->id}}" class="form-check-input" >
+                                <label class="form-check-label">{{$tag->name}}</label>
+
+                            </div>
+                        @endforeach
+                        @error('tags')
                             <div class="text-danger">{{$message}}</div>
                         @enderror
                     </div>

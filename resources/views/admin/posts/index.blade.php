@@ -16,7 +16,11 @@
                 </div>
             </div>
             <div class="col-12 mt-5">
-                @include
+               @if(session('message'))
+                    <div class="alert alert-success">
+                        {{session('message')}}
+                    </div>
+               @endif
             </div>
             </div>
             <div class="col-12 mt-5">
